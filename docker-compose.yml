@@ -1,0 +1,16 @@
+version: '2'
+services:
+  postgres:
+    build: ./database/
+  web:
+    build: .
+    ports:
+     - "8081:8081"
+    links:
+      - postgres
+    environment:
+      - DATABASE_HOST=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PWD=postgres
+      - DATABASE=database_name_dev
+      - ENVIRONMENT=dev
